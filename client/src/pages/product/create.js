@@ -57,6 +57,8 @@ export const CreateProduct = () => {
             case 'price':
                 values[index].price = event.target.value;
                 break
+            default:
+                // do nothing
         }
 
         setVarieties(values);

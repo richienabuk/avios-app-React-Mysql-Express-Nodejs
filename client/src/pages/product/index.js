@@ -31,14 +31,12 @@ export const Products = () => {
                     {products.map(product => (
                         <Col key={product.id}>
                             <Card>
-                                {product.images && product.images.length > 0 && <Card.Img variant="top" src={`http://localhost:5000/${product.images[0]}`} />}
+                                {product.images && product.images.length > 0 && <Card.Img variant="top" src={product.images[0]} />}
                                 <Card.Body>
                                     <Card.Title>{product.name}</Card.Title>
-                                    <Card.Text>
-                                        {product.images}
-                                        This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.
-                                    </Card.Text>
+                                   {/* <Card.Text>
+                                        {product.description}
+                                    </Card.Text>*/}
                                     {/*{product.varieties && product.varieties.length > 0 && <div>${JSON.stringify(product.varieties[0].size)}</div>}*/}
                                     <Card.Link href="#" className="btn btn-outline-primary">Add to cart</Card.Link>
                                 </Card.Body>

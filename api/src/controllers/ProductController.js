@@ -1,7 +1,10 @@
 import model from '../models';
-import {imageUpload} from "../services/multer";
+import cloudinary from "../services/cloudinary";
+import fs from 'fs';
 
 const { Product } = model;
+
+const uploader = async (path) => await cloudinary(path, 'images')
 
 export default {
   async index(req, res) {
@@ -18,8 +21,15 @@ export default {
   async create(req, res) {
     const { name, description, varieties } = req.body;
     try {
-      const images = req.files?.map(file => file.path);
-      const product = await Product.create({ name, description, varieties, images });
+      const urls = []
+      const files = req.files;
+      for (const file of files) {
+        const { path } = file;
+        const newPath = await uploader(path)
+        urls.push(newPath.url)
+        fs.unlinkSync(path)
+      }
+      const product = await Product.create({ name, description, varieties, images: urls });
       return res.status(201).send({ message: 'Product added successfully', data: product });
     } catch(e) {
       console.error(e);
