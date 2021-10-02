@@ -17,7 +17,6 @@ export default {
 
   async create(req, res) {
     const { name, description, varieties } = req.body;
-    console.log(req.files, req.body)
     try {
       const images = req.files?.map(file => file.path);
       const product = await Product.create({ name, description, varieties, images });
