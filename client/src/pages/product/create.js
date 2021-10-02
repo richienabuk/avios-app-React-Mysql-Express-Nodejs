@@ -22,11 +22,7 @@ export const CreateProduct = () => {
         form.append('name', formData.name);
         form.append('description', formData.description);
 
-        varieties.forEach(item => {
-            if (item.size.trim() && item.price.trim() && item.color.trim() && item.quantity.trim()) {
-                form.append('varieties[]', item)
-            }
-        })
+        form.append('varieties', JSON.stringify(varieties))
 
         for (const key of Object.keys(formData.images)) {
             form.append('images', formData.images[key])
