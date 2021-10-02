@@ -3,7 +3,7 @@ import multer from 'multer'
 const storage = multer.diskStorage({
     // Destination to store image
     destination: (req, file, cb) => {
-        cb(null, './assets/images')
+        cb(null, 'assets/images')
     },
     filename: (req, file, cb) => {
         cb(null, new Date().toISOString().replace(/:/g, '-') + '-' + file.originalname)
