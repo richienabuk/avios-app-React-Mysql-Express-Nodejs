@@ -37,7 +37,7 @@ export const Products = () => {
                                    {/* <Card.Text>
                                         {product.description}
                                     </Card.Text>*/}
-                                    {/*{product.varieties && product.varieties.length > 0 && <div>${JSON.stringify(product.varieties[0].size)}</div>}*/}
+                                    {product.varieties && <div className="my-2">Starting price - ${JSON.parse(product.varieties)[0].price}</div>}
                                     <Card.Link href="#" className="btn btn-outline-primary">Add to cart</Card.Link>
                                 </Card.Body>
                             </Card>
